@@ -1,0 +1,23 @@
+---
+# tasks file for stunnel-role
+- name: Install package
+  apt: 
+    name: stunnel4 
+    force: yes
+
+- name: Enable stunnel
+  lineinfile:
+    dest: /etc/default/stunnel4
+    state: present
+    regexp: ENABLED=
+    line: ENABLED=1
+
+- name: Stunnel configuration
+  template:
+    src: stunnel.conf.j2
+    dest: /etc/stunnel/stunnel.conf
+
+- name: Start stunnel service
+  service:
+    name: stunnel4
+    state: started

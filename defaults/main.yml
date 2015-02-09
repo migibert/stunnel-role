@@ -1,0 +1,10 @@
+---
+# defaults file for stunnel-role
+stunnel_cert_key: /home/mikael/Documents/projects/hackdays/certificates/server.key
+stunnel_cert_file: /home/mikael/Documents/projects/hackdays/certificates/server.crt
+stunnel_fips: no
+stunnel_services: 
+  - stunnel_service:
+    name: https
+    accept_port: 443
+    connect_port: 80
