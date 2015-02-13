@@ -1,0 +1,11 @@
+- name: Generate key 
+  command: openssl genrsa -out key.pem 2048
+
+- name: Generate certificate
+  command: openssl req -new -x509 -key key.pem -newkey rsa:4096 -keyout www.mydomain.com -out cert.pem -days 365 -nodes -subj "/C=FR/ST=Paris/L=Paris/O=Gibert/CN=www.mydomain.com"
+
+- name: Copy certificate
+  shell: cat key.pem cert.pem >> /etc/stunnel/stunnel.pem
+
+- name: Set certificate permissions
+  command: chmod 600 /etc/stunnel/stunnel.pem

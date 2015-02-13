@@ -1,5 +1,10 @@
 ---
 # tasks file for stunnel-role
+- name: Install SSL backend
+  apt:
+    name: openssl
+    update_cache: yes
+
 - name: Install package
   apt: 
     name: stunnel4 
@@ -11,6 +16,9 @@
     state: present
     regexp: ENABLED=
     line: ENABLED=1
+
+- include: certificate.yml
+  when: '{{stunnel_certificate_generation}}'
 
 - name: Stunnel configuration
   template:
