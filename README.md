@@ -1,12 +1,12 @@
 Stunnel
 =========
-[![Galaxy](http://img.shields.io/badge/ansible--galaxy-orientdb-blue.svg)](https://galaxy.ansible.com/list#/roles/2790)
+[![Galaxy](http://img.shields.io/badge/ansible--galaxy-stunnel-blue.svg)](https://galaxy.ansible.com/list#/roles/3502)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)  
 
 
 Ansible role to install stunnel in order to achieve SSL Termination on Linux machines.
 
-Install it with ansible-galaxy install migibert.stunnel
+Install it with `ansible-galaxy install migibert.stunnel`
 
 
 Role Variables
