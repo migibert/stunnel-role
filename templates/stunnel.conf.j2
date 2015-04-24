@@ -1,10 +1,9 @@
 pid=/var/run/stunnel.pid
-cert={{stunnel_cert_file}}
+cert=/etc/stunnel/stunnel.pem
 output=/var/log/stunnel.log
 
 {% for service in stunnel_services %}
 [{{service.name}}]
-  accept = {{service.accept_port}}
-  connect= {{service.connect_port}}
+  accept = {{service.accept}}
+  connect= {{service.connect}}
 {% endfor %}
-

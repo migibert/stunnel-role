@@ -1,8 +1,15 @@
 ---
-stunnel_certificate_generation: True
-stunnel_cert_file: /home/mikael/Documents/projects/hackdays/certificates/stunnel.pem
-stunnel_services: 
+stunnel_certificate_generation: False
+stunnel_certificate_duration: 365
+stunnel_certificate_domain: www.domain.com
+stunnel_certificate_country: FR
+stunnel_certificate_organization: organization
+stunnel_certificate_state_name: state
+stunnel_certificate_locality: locality
+stunnel_certificate_file: /tmp/certificate.pem
+stunnel_key_file: /tmp/key.pem
+stunnel_services:
   - service:
     name: https
-    accept_port: 443
-    connect_port: 80
+    accept: 443
+    connect: 80

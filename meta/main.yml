@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Mikael Gibert
-  description: Stunnel role    
+  description: Stunnel role
   license: MIT
   min_ansible_version: 1.2
   platforms:  

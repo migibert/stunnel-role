@@ -1,40 +1,67 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Ansible role to install stunnel in order to achieve SSL Termination on Linux machines.
 
-Requirements
-------------
+Install it with ansible-galaxy install migibert.stunnel
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+```
+stunnel_certificate_generation (default False) : determines if this role has to generate a self signed certificate
+stunnel_certificate_duration: (optional, if stunnel_certificate_generation is True, default 365) : self signed certificate validity duration
+stunnel_certificate_domain: (optional, if stunnel_certificate_generation is True, default www.domain.com) : self signed certificate domain field
+stunnel_certificate_country: (optional, if stunnel_certificate_generation is True, default FR) : self signed certificate country field
+stunnel_certificate_organization: (optional, if stunnel_certificate_generation is True, default organization) : self signed certificate organization field
+stunnel_certificate_state_name: (optional, if stunnel_certificate_generation is True, default state) : self signed certificate state field
+stunnel_certificate_locality: (optional, if stunnel_certificate_generation is True, default locality) : self signed certificate locality field
+stunnel_certificate_file: certificate file to generate or use, depends on stunnel_certificate_generation value. Default is /tmp/certificate.pem
+stunnel_key_file: key file to generate or use, depends on stunnel_certificate_generation value. Default is /tmp/key.pem
+stunnel_services: list of services. They look like this:
+- service:
+    name: https
+    accept: 443
+    connect: 80
+  
+```
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role has no dependencies.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+```
+- hosts: all
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+  roles:
+  - role: stunnel-role
+    stunnel_certificate_generation: True
+    stunnel_certificate_duration: 365
+    stunnel_certificate_domain: www.domain.com
+    stunnel_certificate_country: FR
+    stunnel_certificate_organization: Gibert
+    stunnel_certificate_state_name: Paris
+    stunnel_certificate_locality: Paris
+    stunnel_certificate_file: /tmp/stunnel.pem
+    stunnel_key_file: /tmp/key.pem
+    stunnel_services:
+      - service:
+        name: https
+        accept: 443
+        connect: 80
+```
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
 
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
-
-http://www.stunnel.org/static/stunnel.html
+Mikaël Gibert, Developer / Devops
