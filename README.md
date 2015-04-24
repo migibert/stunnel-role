@@ -1,5 +1,8 @@
-Role Name
+Stunnel
 =========
+[![Galaxy](http://img.shields.io/badge/ansible--galaxy-orientdb-blue.svg)](https://galaxy.ansible.com/list#/roles/2790)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)  
+
 
 Ansible role to install stunnel in order to achieve SSL Termination on Linux machines.
 
