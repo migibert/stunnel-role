@@ -1,5 +1,11 @@
 ---
 # tasks file for stunnel-role
+
+- name: sanity check that we use at least one of certificate or psk
+  fail:
+    msg: You should activate at least one of stunnel_use_certificate and stunnel_use_psk
+  when: not (stunnel_use_certificate or stunnel_use_psk)
+
 - name: Install SSL backend
   apt:
     name: openssl
@@ -20,7 +26,11 @@
     line: ENABLED=1
   register: enable_stunnel
 
-- include: certificate.yml  
+- include: certificate.yml
+  when: stunnel_use_certificate
+
+- include: psk.yml
+  when: stunnel_use_psk
 
 - name: Stunnel configuration
   template:
@@ -32,4 +42,8 @@
   service:
     name: stunnel4
     state: restarted
-  when: install_stunnel_4.changed or enable_stunnel.changed or stunnel_configuration.changed
+  when: >
+    install_stunnel_4.changed or
+    enable_stunnel.changed or
+    stunnel_configuration.changed or
+    (stunnel_psk_file.changed|default(false))

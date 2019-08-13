@@ -1,9 +1,17 @@
 pid=/var/run/stunnel.pid
+output = /var/log/stunnel.log
+
+{% if stunnel_use_certificate %}
 cert=/etc/stunnel/stunnel.pem
-output=/var/log/stunnel.log
+{% endif %}
 
 {% for service in stunnel_services %}
 [{{service.name}}]
   accept = {{service.accept}}
-  connect= {{service.connect}}
+  connect = {{service.connect}}
+{% if stunnel_use_psk %}
+  ciphers = PSK
+  PSKsecrets = /etc/stunnel/psk.txt
+{% endif %}
+
 {% endfor %}
