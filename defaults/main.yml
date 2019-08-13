@@ -1,4 +1,6 @@
 ---
+stunnel_use_certificate: true
+stunnel_use_psk: false
 stunnel_certificate_generation: False
 stunnel_certificate_duration: 365
 stunnel_certificate_domain: www.domain.com
