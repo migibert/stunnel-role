@@ -27,8 +27,10 @@ stunnel_services: list of services. They look like this:
     name: https
     accept: 443
     connect: 80
-  
+    client: "yes"  # defaults to "no"
 ```
+
+(beware, set client to string "yes", not to yes alone, which, in yaml, is boolean value true)
 
 Dependencies
 ------------

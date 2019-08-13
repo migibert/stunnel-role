@@ -4,6 +4,7 @@ output=/var/log/stunnel.log
 
 {% for service in stunnel_services %}
 [{{service.name}}]
+  client = {{ service.client|default("no") }}
   accept = {{service.accept}}
   connect= {{service.connect}}
 {% endfor %}
