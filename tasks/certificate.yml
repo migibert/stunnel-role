@@ -1,10 +1,10 @@
 - name: Generate key 
   command: openssl genrsa -out {{stunnel_key_file}} 2048
-  when: stunnel_certificate_generation
+  when: stunnel_certificate_generation | bool
 
 - name: Generate certificate
   command: openssl req -new -x509 -key {{stunnel_key_file}} -newkey rsa:4096 -keyout {{stunnel_certificate_domain}} -out {{stunnel_certificate_file}} -days {{stunnel_certificate_duration}} -nodes -subj "/C={{stunnel_certificate_country}}/ST={{stunnel_certificate_state_name}}/L={{stunnel_certificate_locality}}/O={{stunnel_certificate_organization}}/CN={{stunnel_certificate_domain}}"
-  when: stunnel_certificate_generation
+  when: stunnel_certificate_generation | bool
 
 - name: Copy certificate
   shell: cat {{stunnel_key_file}} {{stunnel_certificate_file}} >> /etc/stunnel/stunnel.pem  
