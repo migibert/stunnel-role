@@ -20,9 +20,17 @@
     dest: /etc/stunnel/stunnel.conf
   register: stunnel_configuration
 
+- name: Enable stunnel
+  lineinfile:
+    dest: /etc/default/stunnel4
+    state: present
+    regexp: ENABLED=
+    line: ENABLED=1
+  register: enable_stunnel
+
 - name: Start stunnel service
   service:
     name: stunnel4
     state: restarted
     enabled: true
-  when: install_stunnel_4 is changed or stunnel_configuration is changed
+  when: install_stunnel_4 is changed or enable_stunnel is changed or stunnel_configuration is changed
