@@ -74,13 +74,13 @@ at the cost of knowing clients in advance.
 
   roles:
   - role: stunnel-role
-    stunnel_use_cert: false
+    stunnel_use_certificate: false
     stunnel_use_psk: true
-    stunnel_psk:
+    stunnel_psks:
       - name: client1
-        psk: ATJX7VOAMIF2nhaknNVmSqSQGrCvMyPt
+        key: ATJX7VOAMIF2nhaknNVmSqSQGrCvMyPt
       - name: client2
-        psk: enNezGQMkZmSyjTDjpndjrBEXhJ9ki3v
+        key: enNezGQMkZmSyjTDjpndjrBEXhJ9ki3v
     stunnel_services:
       - service:
         name: postfix

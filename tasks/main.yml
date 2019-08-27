@@ -19,10 +19,10 @@
   register: install_stunnel_4
 
 - include: certificate.yml
-  when: stunnel_use_certificate
+  when: stunnel_use_certificate | bool
 
 - include: psk.yml
-  when: stunnel_use_psk
+  when: stunnel_use_psk | bool
 
 - name: Stunnel configuration
   template:

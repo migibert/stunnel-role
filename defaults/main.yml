@@ -10,8 +10,5 @@ stunnel_certificate_state_name: state
 stunnel_certificate_locality: locality
 stunnel_certificate_file: /tmp/certificate.pem
 stunnel_key_file: /tmp/key.pem
-stunnel_services:
-  - service:
-    name: https
-    accept: 443
-    connect: 80
+stunnel_services: []
+stunnel_psks: []
