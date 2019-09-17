@@ -1,0 +1,15 @@
+---
+# tasks to use psk
+- name: sanity check for psk existence
+  fail:
+    msg: If you have stunnel_use_psk you should provide at least one key
+  when: not (stunnel_psks|default(false))
+
+- name: Generate psk file
+  template:
+    src: psk.txt.j2
+    owner: root
+    group: root
+    mode: u=rw,g=,o=
+    dest: /etc/stunnel/psk.txt
+  register: stunnel_psk_file
