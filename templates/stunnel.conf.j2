@@ -1,15 +1,21 @@
-pid=/var/run/stunnel.pid
+pid = /var/run/stunnel.pid
 output = /var/log/stunnel.log
 
 {% if stunnel_use_certificate %}
-cert=/etc/stunnel/stunnel.pem
+cert = /etc/stunnel/stunnel.pem
 {% endif %}
 
 {% for service in stunnel_services %}
 [{{service.name}}]
-  accept = {{service.accept}}
-  connect = {{service.connect}}
-{% if stunnel_use_psk %}
+{% if service.client | default(false) %}
+  client = yes
+{% endif %}
+{% if ( stunnel_use_psk or service.use_psk ) and service.PSKidentity | default(false) %}
+  PSKidentity = {{ service.PSKidentity }}
+{% endif %}
+  accept = {{ service.accept }}
+  connect = {{ service.connect }}
+{% if stunnel_use_psk or service.use_psk %}
   ciphers = PSK
   PSKsecrets = /etc/stunnel/psk.txt
 {% endif %}
