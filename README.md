@@ -13,7 +13,7 @@ Role Variables
 --------------
 
 1. `stunnel_install_ssl_backend` (optional, default False) : determines if we want to install openssl by this role
-1. `stunnel_use_cert` (default True) : determines if we use certificates
+1. `stunnel_use_certificate` (default True) : determines if we use certificates
 1. `stunnel_use_psk` (default False) : determines if we use psk
 1. `stunnel_certificate_generation` (default False) : determines if this role has to generate a self signed certificate
 1. `stunnel_certificate_duration` (optional, if `stunnel_certificate_generation` is True, default 365) : self signed certificate validity duration
