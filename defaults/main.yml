@@ -1,4 +1,5 @@
 ---
+stunnel_install_ssl_backend: false
 stunnel_use_certificate: true
 stunnel_use_psk: false
 stunnel_certificate_generation: False
@@ -12,3 +13,5 @@ stunnel_certificate_file: /tmp/certificate.pem
 stunnel_key_file: /tmp/key.pem
 stunnel_services: []
 stunnel_psks: []
+stunnel_pid: /var/run/stunnel.pid
+stunnel_output: /var/log/stunnel.log

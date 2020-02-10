@@ -11,6 +11,7 @@
     name: openssl
     update_cache: yes
   register: install_ssl_backend
+  when: stunnel_install_ssl_backend
 
 - name: Install package
   package:
