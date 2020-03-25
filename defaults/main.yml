@@ -13,5 +13,7 @@ stunnel_certificate_file: /tmp/certificate.pem
 stunnel_key_file: /tmp/key.pem
 stunnel_services: []
 stunnel_psks: []
-stunnel_pid: /var/run/stunnel.pid
-stunnel_output: /var/log/stunnel.log
+stunnel_uid: stunnel4
+stunnel_gid: stunnel4
+stunnel_pid: /var/run/stunnel4/stunnel.pid
+stunnel_output: /var/log/stunnel4/stunnel.log

@@ -1,3 +1,10 @@
+{% if stunnel_uid %}
+setuid = {{ stunnel_uid }}
+{% endif %}
+{% if stunnel_gid %}
+setgid = {{ stunnel_gid }}
+{% endif %}
+
 pid = {{ stunnel_pid }}
 output = {{ stunnel_output }}
 
