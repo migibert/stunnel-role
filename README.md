@@ -43,6 +43,15 @@ Role Variables
     1. `use_psk` (optional, defaults to global `stunnel_use_psk`) : determines PSK usage for this specific service
     1. `PSKidentity` (optional, depends on `use_psk`) : determines PSK identity for this specific service. This identity should be configured in `PSKsecrets`
 
+1. `stunnel_uid` (default `stunnel4`): name of the user to use for the service.
+   If empty stunnel will keep parent uid.
+   (stunnel strongly recommends to drop privileges).
+1. `stunnel_gid` (default `stunnel4`): name of the group to use for the service.
+   If empty stunnel will keep parent gid.
+1. `stunnel_pid` (default `/var/run/stunnel4/stunnel.pid`): path to the file where pid will be stored.
+   If the argument is empty, then no pid file will be created.
+1. `stunnel_output` (default `/var/log/stunnel4/stunnel.log`): append log messages to a file
+
 Dependencies
 ------------
 
