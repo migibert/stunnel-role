@@ -11,6 +11,9 @@ stunnel_certificate_state_name: state
 stunnel_certificate_locality: locality
 stunnel_certificate_file: /tmp/certificate.pem
 stunnel_key_file: /tmp/key.pem
+stunnel_sslversion: ""
+stunnel_ssl_version_min: ""
+stunnel_ssl_version_max: ""
 stunnel_services: []
 stunnel_psks: []
 stunnel_pid: /var/run/stunnel.pid

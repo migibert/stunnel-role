@@ -24,6 +24,10 @@ Role Variables
 1. `stunnel_certificate_locality` (optional, if `stunnel_certificate_generation` is True, default locality) : self signed certificate locality field
 1. `stunnel_certificate_file` certificate file to generate or use, depends on `stunnel_certificate_generation` value. Default is /tmp/certificate.pem
 1. `stunnel_key_file` key file to generate or use, depends on `stunnel_certificate_generation` value. Default is /tmp/key.pem
+1. To control SSL version :
+    1. `stunnel_sslversion` (optional): specify a SSL version
+    1. `stunnel_ssl_version_min` (optional): specify a min SSL version (when used with OpenSSL 1.1.0 and later)
+    1. `stunnel_ssl_version_max` (optional): specify a max SSL version (when used with OpenSSL 1.1.0 and later)
 1. `stunnel_psks` a list of psk. This look like this:
 
         - name: client1
@@ -65,6 +69,7 @@ Example Playbook
     stunnel_certificate_locality: Paris
     stunnel_certificate_file: /tmp/stunnel.pem
     stunnel_key_file: /tmp/key.pem
+    stunnel_sslversion: TLSv1.2
     stunnel_services:
       - name: https
         accept: 443
