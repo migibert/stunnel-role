@@ -1,6 +1,16 @@
 pid = {{ stunnel_pid }}
 output = {{ stunnel_output }}
 
+{% if stunnel_sslversion %}
+sslVersion = {{ stunnel_sslversion }}
+{% endif %}
+{% if stunnel_ssl_version_min %}
+sslVersionMin = {{ stunnel_ssl_version_min }}
+{% endif %}
+{% if stunnel_ssl_version_max %}
+sslVersionMax = {{ stunnel_ssl_version_max }}
+{% endif %}
+
 {% if stunnel_use_certificate %}
 cert = /etc/stunnel/stunnel.pem
 {% endif -%}
